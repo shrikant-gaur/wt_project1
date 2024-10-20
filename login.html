@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login_style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <style>
+    .error {
+      color: red;
+      font-size: 0.8em;
+      margin-top: 5px;
+    }
+    #passwordError {
+      margin-bottom: 50px; /* Add some space below the password error message */
+    }
+    h1, .input-box input::placeholder, .remember-forgot label, .remember-forgot a, .btn, .register-link p, .register-link a, .divider span {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div id="loader-page">
+    <div class="loader"></div>
+  </div>
+  
+  <div class="theme-switch-wrapper">
+    <label class="theme-switch" for="checkbox">
+      <input type="checkbox" id="checkbox" />
+
+    </label>
+  </div>
+  <div class="wrapper">
+    <form action="" id="loginForm" onsubmit="return validate()">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="text" id="username" placeholder="Username" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div id="usernameError" class="error"></div>
+      <div class="input-box">
+        <input type="email" id="email" placeholder="Email" required>
+        <i class='bx bxs-envelope'></i>
+      </div>
+      <div id="emailError" class="error"></div>
+      <div class="input-box">
+        <input type="password" id="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div id="passwordError" class="error"></div>
+      <div class="remember-forgot">
+        <label><input type="checkbox" id="remember-me">Remember Me</label>
+        <a href="forgot_pass.html">Forgot Password</a>
+      </div>
+      <button type="submit" class="btn">Login</button>
+      <div class="register-link">
+        <p>Don't have an account? <a href="sign_up.html" style="color: black;">Register</a></p>
+      </div>
+      <div class="divider">
+        <span>or</span>
+      </div>
+      <div class="social-login">
+        <button type="button" class="social-btn google-btn" onclick="window.location.href='https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=email profile'">
+          <i class="ri-google-line"></i>
+        </button>
+        <button type="button" class="social-btn github-btn" onclick="window.location.href='https://github.com/login/oauth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=user'">
+          <i class="ri-github-line"></i>
+        </button>
+        <button type="button" class="social-btn email-btn" onclick="window.location.href='mailto:your-email@example.com'">
+          <i class='ri-mail-line'></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <script src="../registration_pages/login.js"></script>
+  <script>
+    function validate() {
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const usernameError = document.getElementById('usernameError');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+
+      // Reset error messages
+      usernameError.textContent = '';
+      emailError.textContent = '';
+      passwordError.textContent = '';
+
+      // Username validation
+      if (username === "") {
+        usernameError.textContent = "Please Enter Your Name";
+        return false;
+      }
+      if (!isNaN(username)) {
+        usernameError.textContent = "Please Enter Characters only";
+        return false;
+      }
+
+      // Email validation
+      if (email === "") {
+        emailError.textContent = "Please Enter Your Email";
+        return false;
+      }
+      const emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (!emailFormat.test(email)) {
+        emailError.textContent = "Please Enter correct email format";
+        return false;
+      }
+
+      // Password validation
+      if (password === "") {
+        passwordError.textContent = "Please Enter Your Password";
+        return false;
+      }
+      const passwordFormat = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      if (!passwordFormat.test(password)) {
+        passwordError.textContent = "Please enter Minimum 8 characters, at least 1 Alphabet and 1 Number";
+        return false;
+      }
+      if (password.length < 6 || password.length > 12) {
+        passwordError.textContent = "Please Enter Your Password between 6 to 12 characters";
+        return false;
+      }
+
+      // If all validations pass
+      console.log('Form submitted successfully');
+      window.location.href = 'index.html'; // Redirect to home page
+      return false; // Prevent form from submitting
+    }
+
+    // Real-time validation
+    document.getElementById('username').addEventListener('input', function() {
+      const usernameError = document.getElementById('usernameError');
+      if (this.value === "" || !isNaN(this.value)) {
+        usernameError.textContent = "Please enter alphabetic characters only.";
+      } else {
+        usernameError.textContent = '';
+      }
+    });
+
+    document.getElementById('email').addEventListener('input', function() {
+      const emailError = document.getElementById('emailError');
+      const emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (!emailFormat.test(this.value)) {
+        emailError.textContent = 'Please enter a valid email address';
+      } else {
+        emailError.textContent = '';
+      }
+    });
+
+    document.getElementById('password').addEventListener('input', function() {
+      const passwordError = document.getElementById('passwordError');
+      const passwordFormat = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      if (!passwordFormat.test(this.value) || this.value.length < 6 || this.value.length > 12) {
+        passwordError.textContent = 'Password must be 6-12 characters, including at least one letter and one number';
+      } else {
+        passwordError.textContent = '';
+      }
+    });
+  </script>
+</body>
+</html>

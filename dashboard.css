@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* Changed to white */
+    color: #000000; /* Changed text color to black */
+    min-height: 100vh;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+    padding-top: 210px;
+}
+
+.search-container {
+    width: 90%;
+    max-width: 1400px;
+    text-align: center;
+    margin: 0 auto; /* Center align the search container */
+    margin-bottom: 2rem;
+    position: fixed;
+    margin-top: -250px;
+    margin-left: 50px;
+    z-index: 1000;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0; /* Changed to light background */
+    border-radius: 9999px;
+    padding: 0.75rem;
+}
+
+.search-input {
+    flex-grow: 2;
+    border: none;
+    outline: none;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    background-color: #f0f0f0; /* Changed to light background */
+    color: #000000; /* Changed text color to black */
+    font-size: 1rem;
+}
+
+.location, .experience {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.location i, .experience i {
+    margin-right: 0.5rem;
+    color: #666666; /* Changed to a lighter gray */
+}
+
+.search-filter {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1rem;
+    color: #666666; /* Changed to a lighter gray */
+}
+
+.search-btn, .reset-btn {
+    background-color: #6A0DAD; /* Retained original color */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    font-size: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.search-btn:hover, .reset-btn:hover {
+    background-color: #5b09a1; /* Retained original hover color */
+}
+
+.reset-btn {
+    background-color: #808080; /* Retained original color */
+}
+
+.reset-btn:hover {
+    background-color: #696969; /* Retained original hover color */
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.company-card {
+    background: #ffffff; /* Changed to white */
+    border-radius: 16px;
+    padding: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.1); /* Changed to a lighter border */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.company-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2); /* Changed to a darker shadow */
+}
+
+.company-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.company-name {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.job-role, .location, .package, .experience {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #666666; /* Changed to a lighter gray */
+}
+
+.nav-container {
+    transition: background-color 0.3s ease;
+    width: 100%;
+    background-color: #ffffff; /* Changed to white */
+    height: 190px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 60px;
+    background-color: #ffffff; /* Changed to white */
+    color: black; /* Changed text color to black */
+    width: 83%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo a :hover{
+    border-bottom: 2px solid black; /* Changed hover color to black */
+}
+.logo h2 {
+    font-family: 'Pacifico', cursive;
+    margin-right: 10px;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-links a:hover {
+    color: black; /* Changed hover color to black */
+    background-color: #f0f0f0; /* Changed hover background to light */
+}
+
+.scroll-to-about{
+    color: black; /* Changed text color to black */
+    background-color: #f0f0f0; /* Changed background to light */
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+}
+
+.profile-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-text {
+    color: black; /* Changed text color to black */
+}
+
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc; /* Retained original color */
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff; /* Retained original color */
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked + .slider {
+    background-color: #000000; /* Retained original color */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
